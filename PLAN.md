@@ -6,7 +6,19 @@
 future, and what is structurally unthinkable to it? And - the version that only this project
 can ask - if you re-run history from inside those minds, does the same century happen twice?
 
-**Status:** Phase 0 not started. No code written yet. This file is the doc of record.
+**Status (2026-08-23):** Phase 0 **run and passed**. Phase 1 passed on chill but **falsified this
+plan's central premise**. Read `PHASE0-RESULTS.md` before anything else - it supersedes the forecasting
+design in section 4.
+
+The short version: the 1938 model has no concept of nuclear weapons (the conceivability metric works,
+first try), but it self-reports the year as **1899** and reasons about Europe's future using the
+1866 Austria-Prussia rivalry. A knowledge cutoff is an upper bound on training data, not the model's
+epistemic position. Forecast scoring against 1939-1948 outcomes is therefore invalid: the forecaster is
+not standing in 1938.
+
+**Awaiting Zaid's decision** on the proposed pivot (measure *effective epistemic date* as a calibration
+instrument for the whole vintage-LLM line). Phases 2 and 3 are deliberately NOT started, because the
+pivot changes what the harness should be.
 
 ---
 
