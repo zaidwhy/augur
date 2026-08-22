@@ -1,0 +1,6 @@
+# Model weights live outside the repo (see PHASE0-RESULTS.md)
+*.gguf
+*.safetensors
+models/
+__pycache__/
+.venv/
