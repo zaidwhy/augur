@@ -4,6 +4,7 @@ title: "AUGUR: Measuring Where Time-Locked Language Models Actually Speak From"
 authors:
   - family-names: "Syed"
     given-names: "Zaid Ali"
+    orcid: "https://orcid.org/0009-0003-4313-1510"
 date-released: 2026-08-24
 url: "https://github.com/zaidwhy/augur"
 repository-code: "https://github.com/zaidwhy/augur"
