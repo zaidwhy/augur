@@ -5,6 +5,8 @@
 
 **A language model trained on nothing published after 1938, asked what year it is, answers 1899.**
 
+<img src="https://raw.githubusercontent.com/zaidwhy/zaidwhy/main/assets/augur-drift.svg" alt="Two time-locked models on a timeline: TypeWriter-1938 speaks from 1899, a 39 year gap; Talkie-1930 speaks from 1850, an 80 year gap." width="100%">
+
 Not as a joke, and not as a hallucination it can be talked out of. Ask it about the most
 recent war and it reaches for Crimea. Ask who is President and it says George Washington.
 Tell it firmly that the year is 1938 and it politely declines to move.
@@ -154,3 +156,21 @@ nonsense and none of it will be the model's fault.
 An augur read the future in the flight of birds. The joke is that these models cannot read
 the future at all - the finding here is that they cannot reliably read their own present
 either.
+
+## Copyright, citation, and provenance
+
+**Copyright (c) 2026 Zaid Ali Syed.** ORCID [0009-0003-4313-1510](https://orcid.org/0009-0003-4313-1510).
+
+The code in this repository is MIT licensed - see [LICENSE](LICENSE) - and you are free to use
+it with the copyright notice retained, as the licence requires. **The written analysis, the
+probe design, and the findings are original scholarly work.** If you build on them, cite the
+archived record rather than reproducing the text:
+
+> Syed, Z. A. (2026). *AUGUR: The Effective Epistemic Date of Time-Locked Language Models*.
+> Zenodo. https://doi.org/10.5281/zenodo.22309658
+
+The DOI above is the concept DOI: it always resolves to the newest archived version. Machine-readable
+metadata is in [`CITATION.cff`](CITATION.cff), and GitHub's "Cite this repository" panel reads it directly.
+
+Every commit here is signed with ed25519 key `EFE9 4832 B2B9 80D9 B583 91F2 8FAA BCC1 B1AC 09E5`
+and shows as Verified on GitHub. A commit in my name without a valid signature was not made by me.
