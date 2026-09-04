@@ -1,5 +1,8 @@
 # AUGUR
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22309658.svg)](https://doi.org/10.5281/zenodo.22309658)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 **A language model trained on nothing published after 1938, asked what year it is, answers 1899.**
 
 Not as a joke, and not as a hallucination it can be talked out of. Ask it about the most

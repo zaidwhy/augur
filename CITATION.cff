@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this project or its findings, please cite it as below."
-title: "AUGUR: Measuring Where Time-Locked Language Models Actually Speak From"
+title: "AUGUR: The Effective Epistemic Date of Time-Locked Language Models"
 authors:
   - family-names: "Syed"
     given-names: "Zaid Ali"
@@ -9,6 +9,7 @@ date-released: 2026-08-24
 url: "https://github.com/zaidwhy/augur"
 repository-code: "https://github.com/zaidwhy/augur"
 license: MIT
+doi: "10.5281/zenodo.22309658"
 abstract: >
   Time-locked language models do not stand at their knowledge cutoff.
   This project measures where they actually speak from, and whether
