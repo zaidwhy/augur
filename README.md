@@ -197,10 +197,11 @@ either.
 
 **Copyright (c) 2026 Zaid Ali Syed.** ORCID [0009-0003-4313-1510](https://orcid.org/0009-0003-4313-1510).
 
-The code in this repository is MIT licensed - see [LICENSE](LICENSE) - and you are free to use
-it with the copyright notice retained, as the licence requires. **The written analysis, the
-probe design, and the findings are original scholarly work.** If you build on them, cite the
-archived record rather than reproducing the text:
+Two licences, because there are two different things here. The **code** is MIT - see
+[LICENSE](LICENSE) - and you may use it with the copyright notice retained. The **written analysis
+and the probe design** are the archived record on Zenodo, released under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): free to reuse and build on, attribution
+required. If you build on the findings, cite the record rather than reproducing the text:
 
 > Syed, Z. A. (2026). *AUGUR: The Effective Epistemic Date of Time-Locked Language Models*.
 > Zenodo. https://doi.org/10.5281/zenodo.22309658

@@ -1,15 +1,16 @@
 {
   "title": "AUGUR: The Effective Epistemic Date of Time-Locked Language Models",
-  "upload_type": "software",
+  "upload_type": "publication",
   "access_right": "open",
-  "license": "MIT",
+  "license": "cc-by-4.0",
   "creators": [
     {
       "name": "Syed, Zaid Ali",
-      "orcid": "0009-0003-4313-1510"
+      "orcid": "0009-0003-4313-1510",
+      "affiliation": "Independent researcher"
     }
   ],
-  "description": "<p>A language model trained on nothing published after 1938, asked what year it is, answers <strong>1899</strong>.</p><p>Research groups are training language models from scratch on corpora that stop at a fixed historical date, on the assumption that a model with a 1938 cutoff represents 1938. This work measures that assumption and finds it wrong. A knowledge cutoff describes the <em>edge</em> of a training corpus, not its centre of gravity, and the two models tested both answer from <strong>four to eight decades before their stated cutoff</strong> when left unprompted.</p><p>The work introduces the <em>effective epistemic date</em>: the year a model speaks from when nobody tells it otherwise. It further shows that recoverability is a second, independent axis. Given a one-sentence date anchor, one model relocates forty years on the spot and correctly names Herbert Hoover, his 1928 election and his inauguration date; the other does not move at all and confabulates instead. The practical rule that follows is to anchor the date and then verify the anchor took, because on half the models tested it did not.</p><p>A second finding emerged from the demonstration: asked whether another great war was coming, a 1930-anchored model calls it highly improbable, while the same model in the same year, asked instead to enumerate the dangers facing Europe, produces an accurate threat assessment naming the Rhineland, Poland and Czechoslovakia. Both answers were present in the corpus. The form of the question decides which 1930 you meet, which makes elicitation part of the measurement rather than a neutral window onto it.</p><p><strong>Scope and limits:</strong> n = 2 model families. This is replication, not a law. Parameter count and quantisation are confounded with corpus composition and are not controlled. Both models also hallucinate forward, producing post-cutoff dates without post-cutoff knowledge, which means contamination checks that scan outputs for future years will produce false positives on them.</p><p>Repository contains the full probe battery (14 probes, temperature 0, fixed seed), unedited raw model output for both models, the reproduction script, and the original plan including the forecasting programme that the first phase falsified.</p>",
+  "description": "<p>A language model trained on nothing published after 1938, asked what year it is, answers <strong>1899</strong>.</p><p>Research groups are training language models from scratch on corpora that stop at a fixed historical date, on the assumption that a model with a 1938 cutoff represents 1938. This work measures that assumption and finds it wrong. A knowledge cutoff describes the <em>edge</em> of a training corpus, not its centre of gravity, and the two models tested both answer from <strong>four to eight decades before their stated cutoff</strong> when left unprompted.</p><p>The work introduces the <em>effective epistemic date</em>: the year a model speaks from when nobody tells it otherwise. It further shows that recoverability is a second, independent axis. Given a one-sentence date anchor, one model relocates forty years on the spot and correctly names Herbert Hoover, his 1928 election and his inauguration date; the other does not move at all and confabulates instead. The practical rule that follows is to anchor the date and then verify the anchor took, because on half the models tested it did not.</p><p>A second finding emerged from the demonstration: asked whether another great war was coming, a 1930-anchored model calls it highly improbable, while the same model in the same year, asked instead to enumerate the dangers facing Europe, produces an accurate threat assessment naming the Rhineland, Poland and Czechoslovakia. Both answers were present in the corpus. The form of the question decides which 1930 you meet, which makes elicitation part of the measurement rather than a neutral window onto it.</p><p><strong>Scope and limits:</strong> n = 2 model families. This is replication, not a law. Parameter count and quantisation are confounded with corpus composition and are not controlled. Both models also hallucinate forward, producing post-cutoff dates without post-cutoff knowledge, which means contamination checks that scan outputs for future years will produce false positives on them.</p><p><strong>Position against prior work:</strong> that a model's effective knowledge cutoff differs from its reported one is established. Cheng, Marone, Weller, Lawrie, Khashabi and Van Durme (<em>Dated Data: Tracing Knowledge Cutoffs in Large Language Models</em>, arXiv:2403.12958) define the effective cutoff, show it disagrees with the reported cutoff on mainstream models, and trace the cause to corpus composition: old data surviving in new CommonCrawl dumps, plus deduplication that misses semantic and near-duplicates. That general claim and that mechanism are not claimed here. What this work adds is the magnitude on deliberately time-locked models (decades rather than months, on corpora that are uncontaminated by construction), the method (behavioural self-report, asking the model directly what year it is, rather than resource-level probing across dated data versions), and the relocatability axis, which is absent from that work and which splits the two models tested.</p><p>Repository contains the full probe battery (14 probes, temperature 0, fixed seed), unedited raw model output for both models, the reproduction script, and the original plan including the forecasting programme that the first phase falsified.</p>",
   "keywords": [
     "language models",
     "knowledge cutoff",
@@ -19,13 +20,24 @@
     "prompt sensitivity",
     "elicitation",
     "hallucination",
-    "computational history"
+    "computational history",
+    "effective cutoff",
+    "reproducibility",
+    "negative result"
   ],
   "related_identifiers": [
     {
       "identifier": "https://github.com/zaidwhy/augur",
       "relation": "isSupplementTo",
       "scheme": "url"
+    },
+    {
+      "identifier": "10.48550/arXiv.2403.12958",
+      "relation": "cites",
+      "scheme": "doi"
     }
-  ]
+  ],
+  "publication_type": "report",
+  "language": "eng",
+  "notes": "Every commit in the source repository is signed with ed25519 key EFE9 4832 B2B9 80D9 B583 91F2 8FAA BCC1 B1AC 09E5 and shows as Verified on GitHub. The code in the repository is MIT licensed; this deposit, which is the written analysis and the experimental design, is CC BY 4.0 and requires attribution. ORCID 0009-0003-4313-1510."
 }
