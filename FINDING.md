@@ -85,7 +85,33 @@ That is an accurate 1930 threat assessment, and it flatly contradicts the answer
 **Second finding: elicitation framing decides whether you get the era's reassurance or its alarm.** Both
 were in the corpus. A direct yes/no forecast surfaces the confident editorial consensus; an open-ended
 enumeration surfaces the specific analysis. This is a sharper version of the conceivability question in
-`PLAN.md` and no prior art was found on it either.
+`PLAN.md`, and I found no prior art measuring it. The framing claim is the one part of this write-up
+with no prior-art check I would call thorough: I searched for it and found nothing, which is weaker
+than knowing it is absent.
+
+## Where this sits against prior work
+
+**Dated Data: Tracing Knowledge Cutoffs in Large Language Models** (arXiv:2403.12958; Cheng, Marone,
+Weller, Lawrie, Khashabi, Van Durme, 2024) already defines an *effective cutoff* distinct from the
+reported one, shows the two disagree on mainstream LLMs, and traces the cause to corpus composition:
+old data surviving in new CommonCrawl dumps, plus deduplication that misses semantic and
+near-duplicates. The general claim and the corpus-mass mechanism are theirs.
+
+Three things here are not in that work:
+
+1. **Magnitude.** Their gap is a curation artifact measured against recent resource versions. The
+   gap measured here is 40 to 85 years, on models whose corpora are thin and old enough for the
+   distinction between a corpus's edge and its centre of gravity to become the dominant effect.
+2. **Method.** They probe resource-level temporal alignment across dated versions of the data. This
+   asks the model directly - "what year is it", who is president, what was the most recent war - and
+   takes the answer as the measurement. That is also the failure mode a user of a vintage model
+   meets first.
+3. **Relocatability.** Whether a date anchor recovers post-shift knowledge is a separate axis and is
+   not addressed there. It splits the two models tested here, which means it cannot be assumed.
+
+The models themselves (TypeWriter-1938, Talkie-1930) are other people's work, as recorded in
+`PLAN.md`. Passive surprisal on vintage models is also already done, by the Talkie authors; nothing
+here re-claims it.
 
 ## Caveats, stated plainly
 

@@ -116,6 +116,42 @@ since 1940" from a model that has never read about 1940. Any contamination check
 by scanning outputs for future years will flag these as leaks. They are not leaks. They are
 confabulation that happens to be numeric.
 
+## Prior work, and what is actually mine
+
+The idea that a model's reported cutoff is not its real one is not mine. **Dated Data: Tracing
+Knowledge Cutoffs in Large Language Models** (arXiv:2403.12958; Cheng, Marone, Weller, Lawrie,
+Khashabi and Van Durme, 2024) defines an *effective cutoff*, distinct from the designer-reported
+one, estimates it by probing mainstream LLMs across dated versions of their training resources, and
+finds the two routinely disagree. It also traces the cause into the corpus: CommonCrawl dumps carry
+non-trivial amounts of old data, and deduplication does not remove semantic and near-duplicate
+repeats. That is the corpus-mass mechanism, already established, on real production models. I am not
+claiming it.
+
+What is left, and what this repository actually adds:
+
+- **Uncontaminated by construction.** Dated Data measures models trained on everything up to a
+  recent date. These models were trained on nothing after 1938 and 1930 respectively, by teams with
+  no stake in this question. There is no hindsight to leak, so no leak-detection argument is needed.
+- **Decade-scale, not months.** An effective cutoff that lands a few months early is a data-curation
+  problem. One that lands **40 to 85 years** early is a different claim about where a corpus's centre
+  of gravity sits relative to its edge, and it is only visible when the corpus is deliberately thin
+  and old.
+- **Behavioural self-report, not resource probing.** The measurement here is the model answering
+  "what year is it?" and naming a sitting president. That is the model's own account of when it is,
+  which is what a downstream user of a vintage model actually encounters.
+- **Relocatability, which is a second axis entirely.** Whether telling the model the year recovers
+  the knowledge is not in the prior work. One of these two models moves and answers accurately; the
+  other does not move at all. A study using vintage models cannot know which case it is in without
+  testing.
+- **Elicitation framing.** The same model, same anchor, gives the era's reassurance to a yes/no
+  forecast and the era's alarm to an open-ended enumeration. That is a property of the question, not
+  of the year.
+
+Read together: Dated Data says the effective cutoff differs from the reported one and explains why.
+This says that on time-locked models the gap is decades rather than months, that the model will tell
+you so if you ask it directly, and that whether you can talk it forward varies by model and is worth
+measuring on its own.
+
 ## What this is not
 
 It is two models. That is replication, not a law.
