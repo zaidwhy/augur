@@ -1,0 +1,6 @@
+{
+  "name": "augur",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "postCreateCommand": "pip install pytest && pytest -q",
+  "customizations": { "vscode": { "extensions": ["ms-python.python"] } }
+}
