@@ -3,7 +3,9 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22309658.svg)](https://doi.org/10.5281/zenodo.22309658)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-**A language model trained on nothing published after 1938, asked what year it is, answers 1899.**
+**A language model trained on nothing published after 1938, asked what year it is, answers 1899. Asked again two months later, 1900.**
+
+> **Correction, 2026-10-21 (v1.0.4).** The core result reproduced on a re-run with per-model date anchors. One section of the first version, the "elicitation framing" finding, is withdrawn: its quotations came from an unsaved demo session and did not come back on the re-run. Details in [`FINDING.md`](FINDING.md#correction-2026-10-21-v104) and [`AUDIT-RERUN-2026-10-21.md`](AUDIT-RERUN-2026-10-21.md).
 
 <img src="https://raw.githubusercontent.com/zaidwhy/zaidwhy/main/assets/augur-drift.svg" alt="Two time-locked models on a timeline: TypeWriter-1938 speaks from 1899, a 39 year gap; Talkie-1930 speaks from 1850, an 80 year gap." width="100%">
 
@@ -72,37 +74,31 @@ answer your 1938 question from 1899 and never signal the substitution.
 The practical rule falls straight out: **anchor the date, then verify the anchor took.** On
 half the models tested, it did not.
 
-## What the corpus remembers depends on what you ask it
+## A second finding I had to withdraw
 
-The demonstration I built to show all this off ended up producing a finding of its own, and
-I think it is the more interesting one.
+The first version of this write-up had a section here called "What the corpus remembers depends on
+what you ask it". It quoted the 1930 model, anchored to 1930, calling another great war highly
+improbable, and then, asked instead to enumerate the dangers facing Europe, naming the Rhineland,
+Poland and Czechoslovakia, the Italo-Yugoslav quarrel and Russia. Same model, same year, flatly
+contradictory answers; the form of the question decides which 1930 you meet.
 
-Ask the 1930 model, anchored to 1930, whether another great war is coming. It says no. It
-says the causes of the last conflict have been removed, that the statesmen of the chief
-countries have learned wisdom from experience, that a general feeling of brotherhood has
-been established among the masses. It concludes that another great European war is highly
-improbable.
+Those quotations came from an interactive demo on the day of the first run, and the demo was never
+saved. They are in no committed transcript. When I re-ran the battery on 2026-10-21 (with the anchor
+bug below fixed), the model still said no to another war, but on different grounds, and the dangers
+it listed were "the spread of Socialism", "renewed hostilities between France and Germany" and "a
+general war". The direction of the effect is faintly there; the accurate, specific threat list that
+made the demo worth writing about is not.
 
-Nine years before the invasion of Poland.
+So the framing claim is withdrawn as a finding. It stays in `FINDING.md` as a hypothesis with the
+original quotations labelled as unsaved, and it will need a saved, anchored pair of probes before it
+is claimed again. The two things a corpus holds, its reassurance and its alarm, may still coexist in
+these weights; this repository no longer shows it.
 
-That is a good enough demo on its own. But ask the same model, in the same year, to
-*enumerate the dangers facing Europe* rather than deliver a verdict, and it produces a
-sober and accurate threat assessment: German-French antagonism since the occupation of the
-Rhineland, Poland and Czechoslovakia, the Italo-Yugoslav quarrel, Russia as a permanent
-menace, every one of these countries armed to the teeth and none of them wishing to disarm.
-
-Same model. Same year. Flatly contradictory answers.
-
-Both were in the corpus, because both were in the period. 1930 contained its confident
-editorial consensus and it contained its alarmed specific analysis, and they coexisted in
-print exactly as they coexist in these weights. **The form of the question decides which
-1930 you meet.** A demand for a verdict surfaces the era's reassurance; an invitation to
-enumerate surfaces the era's alarm.
-
-This matters beyond the historical toy. "What did people believe in year X" is not a
-well-posed question you can put to a corpus, because a corpus does not hold a belief - it
-holds a distribution, and your prompt is a sampling procedure over it. Elicitation is not a
-neutral window onto the model. It is part of the measurement.
+Two other corrections from the same audit. The first run's script anchored both models to 1938, so
+the "given the year is 1930" wording in the first version was not what the Talkie-1930 model received;
+the re-run anchors each model to its own cutoff and the recoverability split holds either way. And
+outputs at temperature zero and a fixed seed are not bit-identical across sessions on this machine:
+the years and names reproduce, the wording does not, so every quotation here is illustrative.
 
 ## Why any of this is worth writing down
 
@@ -143,9 +139,6 @@ What is left, and what this repository actually adds:
   the knowledge is not in the prior work. One of these two models moves and answers accurately; the
   other does not move at all. A study using vintage models cannot know which case it is in without
   testing.
-- **Elicitation framing.** The same model, same anchor, gives the era's reassurance to a yes/no
-  forecast and the era's alarm to an open-ended enumeration. That is a property of the question, not
-  of the year.
 
 Read together: Dated Data says the effective cutoff differs from the reported one and explains why.
 This says that on time-locked models the gap is decades rather than months, that the model will tell
@@ -161,8 +154,14 @@ and in quantisation as well as in corpus, and the larger model outperforms the s
 every probe - so some part of the smaller model's refusal to relocate may be capacity
 rather than corpus composition. A third family, or the same family at a second size, would
 separate those. The effective epistemic date is estimated from a fourteen-probe battery
-run at temperature zero, which makes it a real and reproducible effect rather than a
-calibrated measurement.
+run at temperature zero; the years and names reproduce across two runs two months apart, the
+wording does not, so it is a real effect rather than a calibrated measurement.
+
+One more, and it is the one that could cut the headline in half. The 1938 weights are a
+third-party GGUF conversion whose model card lists the 1913 base model and says its author does
+not know which model is which. If that file is the 1913 model, TypeWriter's gap is thirteen
+years, not thirty-nine, and the eighty-year Talkie result carries the claim on its own. Until the
+maintainers answer, read the 1938 label with that doubt attached.
 
 I would rather say that plainly than round it up.
 
@@ -175,16 +174,22 @@ Everything above is argued from evidence that lives in this repository:
 - **[`PHASE0-RESULTS.md`](PHASE0-RESULTS.md)** - the first model in depth, including the
   harness bug that had to be ruled out before any of this could be believed.
 - **[`probes-typewriter-1938.md`](probes-typewriter-1938.md)**,
-  **[`probes-talkie-1930.md`](probes-talkie-1930.md)** - raw model output, unedited.
+  **[`probes-talkie-1930.md`](probes-talkie-1930.md)** - raw model output, unedited (2026-08-23,
+  both anchored to 1938 by the runner bug).
+- **[`probes-typewriter-1938-rerun-2026-10-21.md`](probes-typewriter-1938-rerun-2026-10-21.md)**,
+  **[`probes-talkie-1930-rerun-2026-10-21.md`](probes-talkie-1930-rerun-2026-10-21.md)** - the re-run
+  with per-model anchors; **[`AUDIT-RERUN-2026-10-21.md`](AUDIT-RERUN-2026-10-21.md)** compares the two
+  runs claim by claim.
 - **[`run_probes.ps1`](run_probes.ps1)** - the battery. Temperature 0, fixed seed, identical
-  fourteen probes to both models.
+  fourteen probes to both models; `-AnchorYear` sets the date anchor (1938 or 1930).
 - **[`PLAN.md`](PLAN.md)** - the original design, including the forecasting programme that
   Phase 0 falsified. Left in deliberately; the plan being wrong is part of the result.
 
 Model weights are not in the repository. Both are public GGUF releases and
 `PHASE0-RESULTS.md` names them, along with the one detail that will otherwise cost you an
-afternoon: the weights ship without a chat template, and a local runner will silently treat
-an instruct model as a base completion model if you let it. Every answer will be fluent
+afternoon: the local runner did not apply the chat template (the GGUF does embed one, but Ollama
+reported the model as completion-only), and it will silently treat an instruct model as a base
+completion model if you let it; the Modelfiles in `PHASE0-RESULTS.md` set the template explicitly. Every answer will be fluent
 nonsense and none of it will be the model's fault.
 
 ## A note on the name

@@ -5,7 +5,8 @@ authors:
   - family-names: "Syed"
     given-names: "Zaid Ali"
     orcid: "https://orcid.org/0009-0003-4313-1510"
-date-released: 2026-08-24
+version: 1.0.4
+date-released: 2026-10-21
 url: "https://github.com/zaidwhy/augur"
 repository-code: "https://github.com/zaidwhy/augur"
 license: MIT
@@ -14,4 +15,6 @@ abstract: >
   Time-locked language models do not stand at their knowledge cutoff.
   This project measures where they actually speak from, and whether
   they can be moved - including the finding that a model trained on
-  nothing published after 1938 self-reports the year as 1899.
+  nothing published after 1938 self-reports the year as 1899 (1900 on
+  a re-run). Version 1.0.4 withdraws the elicitation-framing finding
+  of earlier versions and adds the re-run transcripts.
