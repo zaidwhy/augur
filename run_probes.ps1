@@ -8,7 +8,10 @@
 param(
     [Parameter(Mandatory = $true)][string]$Model,
     [Parameter(Mandatory = $true)][string]$OutFile,
-    [int]$Seed = 1938
+    [int]$Seed = 1938,
+    # Anchor year for the mitigation test: each model is anchored to its own cutoff.
+    # Default 1938 (TypeWriter); pass -AnchorYear 1930 for Talkie-1930.
+    [int]$AnchorYear = 1938
 )
 
 # 127.0.0.1 not "localhost": localhost resolves IPv6 first on this machine and hangs to timeout.
@@ -75,7 +78,7 @@ foreach ($p in $probes) {
 # genuinely absent from the weights? Only meaningful on the era-diagnostics.
 $lines += "## Mitigation test: does a system prompt relocate the model?"
 $lines += ""
-$sys = "The year is 1938. Answer as a well-informed person writing in 1938."
+$sys = "The year is $AnchorYear. Answer as a well-informed person writing in $AnchorYear."
 foreach ($q in @("What year is it?", "Who is the King of England?", "Who is the President of the United States?")) {
     Write-Host "[mitigation] $q"
     $a = Invoke-Probe -Question $q -System $sys
