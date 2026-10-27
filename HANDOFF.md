@@ -66,3 +66,10 @@ score what it predicts.
 
 Local git only, `master`, two commits, **no GitHub remote**. Publishing this is your call and I did not
 make it for you. If you do push, the finding in Finding 2 is the part worth leading with.
+
+## 2026-10-28 night refine pass
+
+- Checked: 8 tests and CI green; DOI 10.5281/zenodo.22309658 resolves to record 23534845, version 1.0.4 with the ORCID, matching CITATION.cff; the battery is 14 probes (11 + 3 mitigation), matching the README.
+- Found: `run_probes.ps1` overwrote `-OutFile` without asking, so a rerun named after a committed transcript would replace the archived evidence; a run with Ollama down recorded 14 `[PROBE FAILED]` answers and exited 0.
+- Fixed: an existing `-OutFile` is refused (exit 2) before any model call unless `-Force`; any failed probe exits 1 after writing the file. Test `tests/test_run_probes_guard.py` (written first, failed before the fix; skips where PowerShell is absent); 9 passed. Live: a missing model gave exit 1 with 14 failures; pointing at `probes-typewriter-1938.md` gave exit 2 and git showed the file unchanged.
+- The "Repo state" section above (local only, no remote) is stale: the repo is public at github.com/zaidwhy/augur with CI.

@@ -11,8 +11,15 @@ param(
     [int]$Seed = 1938,
     # Anchor year for the mitigation test: each model is anchored to its own cutoff.
     # Default 1938 (TypeWriter); pass -AnchorYear 1930 for Talkie-1930.
-    [int]$AnchorYear = 1938
+    [int]$AnchorYear = 1938,
+    # The committed probes-*.md are the unedited evidence behind the Zenodo deposit.
+    [switch]$Force
 )
+
+if ((Test-Path -LiteralPath $OutFile) -and -not $Force) {
+    Write-Error "$OutFile already exists; refusing to overwrite a transcript. Pick a new -OutFile, or pass -Force to replace it."
+    exit 2
+}
 
 # 127.0.0.1 not "localhost": localhost resolves IPv6 first on this machine and hangs to timeout.
 $Endpoint = "http://127.0.0.1:11434/api/chat"
@@ -95,3 +102,10 @@ $lines += "Total run time: $([math]::Round($sw.Elapsed.TotalMinutes, 1)) min."
 
 $lines -join "`n" | Out-File -FilePath $OutFile -Encoding utf8
 Write-Host "`nWrote $OutFile"
+
+# A failed probe is kept in the transcript for inspection, but the run is not a result.
+$failed = @($lines | Where-Object { $_ -like "> ``[PROBE FAILED:*" }).Count
+if ($failed -gt 0) {
+    Write-Error "$failed probe(s) failed (is Ollama running with model ${Model}?); $OutFile is not a valid run."
+    exit 1
+}

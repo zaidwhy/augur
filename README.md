@@ -183,7 +183,9 @@ Everything above is argued from evidence that lives in this repository:
   with per-model anchors; **[`AUDIT-RERUN-2026-10-21.md`](AUDIT-RERUN-2026-10-21.md)** compares the two
   runs claim by claim.
 - **[`run_probes.ps1`](run_probes.ps1)** - the battery. Temperature 0, fixed seed, identical
-  fourteen probes to both models; `-AnchorYear` sets the date anchor (1938 or 1930).
+  fourteen probes to both models; `-AnchorYear` sets the date anchor (1938 or 1930). It refuses
+  an existing `-OutFile` (the committed transcripts are the evidence) unless `-Force`, and exits 1
+  if any probe failed.
 - **[`PLAN.md`](PLAN.md)** - the original design, including the forecasting programme that
   Phase 0 falsified. Left in deliberately; the plan being wrong is part of the result.
 
