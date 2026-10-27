@@ -1,4 +1,7 @@
-<img src=".github/plate.svg" alt="AUGUR: A cutoff marks the edge of a corpus, not its centre. 1938 cutoff, answers 1899; 2 model families, 14 probes; DOI 10.5281/zenodo.22309658. Core strip: 16 commits over 10 weeks, Aug 2026 to Oct 2026." width="100%">
+<picture>
+<source media="(max-width: 600px)" srcset=".github/plate-narrow.svg">
+<img src=".github/plate.svg" alt="AUGUR: A cutoff marks the edge of a corpus, not its centre. 1938 cutoff, answers 1899; 2 model families, 14 probes; DOI 10.5281/zenodo.22309658. Core strip: 18 commits over 11 weeks, Aug 2026 to Oct 2026." width="100%">
+</picture>
 
 # AUGUR
 
